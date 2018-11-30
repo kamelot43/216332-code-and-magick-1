@@ -63,7 +63,7 @@
   <div class="demo"></div>
 
   <div class="setup-open">
-    <img src="./img/user-1.jpg" class="setup-open-icon">
+    <img src="./img/user-1.jpg" class="setup-open-icon" tabindex="0">
   </div>
 </header>
 
@@ -81,12 +81,12 @@
         </div>
         <label>
           <input type="text" name="username"
-                 maxlength="25" required
+                 maxlength="25" required minlength="2" maxlength="25"
                  class="setup-user-name" value="Синий Пендальф"/>
         </label>
       </div>
 
-      <span class="setup-close">&times;</span>
+      <span class="setup-close" tabindex="0">&times;</span>
     </div>
 
 
@@ -111,7 +111,7 @@
               <use xlink:href="#wizard-coat" class="wizard-coat" style="fill: #6589a4"></use>
               <use xlink:href="#wizard-head" class="wizard-head"></use>
               <use xlink:href="#wizard-eyes" class="wizard-eyes"></use>
-              <use xlink:href="#wizard-hands" class="wizard-hands"></use>
+              <use xlink:href="#wizard-hands" class="wizard-hands " style="fill: #6589a4"></use>
             </g>
           </svg>
         </div>
@@ -155,7 +155,7 @@
         <div class="setup-similar-list"><!--Список похожих персонажей--></div>
       </div>
 
-      <button class="button setup-submit">Сохранить</button>
+      <button class="button setup-submit" tabindex="0">Сохранить</button>
     </div>
   </form>
 </div>

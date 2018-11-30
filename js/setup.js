@@ -1,8 +1,5 @@
 'use strict';
 
-var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
-
 var similarListElement = document.querySelector('.setup-similar-list');
 
 // Шаблон для создания похожих магов
@@ -16,10 +13,78 @@ var WIZARD_COAT_COLOR = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 10
 
 var WIZARD_EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
 
+var WIZARD_FIREBALL_COLOR = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
+var WIZARDS_QUANTITY = 4;
+
+var setup = document.querySelector('.setup');
+var setupOpen = document.querySelector('.setup-open');
+var setupClose = setup.querySelector('.setup-close');
+var setupUserName = setup.querySelector('.setup-user-name');
+// Управление цветом мантии мага
+var setupWizadrCout = setup.querySelector('.wizard-coat');
+// Управление цветом глаз мага
+var setupWizadrEyes = setup.querySelector('.wizard-eyes');
+// Управление цветом фаербола мага
+var setupWizadrFireball = setup.querySelector('.setup-fireball-wrap');
+
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE && setupUserName !== document.activeElement) {
+    closePopup();
+  }
+};
+
+var openPopup = function () {
+  setup.classList.remove('hidden');
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var closePopup = function () {
+  setup.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
+  }
+});
+
+setupClose.addEventListener('click', function () {
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});
+
+// Изменении цвета мантии мага при клике
+setupWizadrCout.addEventListener('click', function () {
+  setupWizadrCout.style = 'fill:' + WIZARD_COAT_COLOR[findRandomValue(WIZARD_COAT_COLOR)];
+});
+
+// Изменении цвета глаз мага при клике
+setupWizadrEyes.addEventListener('click', function () {
+  setupWizadrEyes.style = 'fill:' + WIZARD_EYES_COLOR[findRandomValue(WIZARD_EYES_COLOR)];
+});
+
+// Изменении цвета фаербола мага при клике
+setupWizadrFireball.addEventListener('click', function () {
+  setupWizadrFireball.style.background = WIZARD_FIREBALL_COLOR[findRandomValue(WIZARD_FIREBALL_COLOR)];
+});
+
+
 // Пустой масив для добавления похожих магов
 var wizards = [];
 
-var WIZARDS_QUANTITY = 4;
 
 // Функция нахождения случайного значения
 function findRandomValue(arr) {
