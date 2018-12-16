@@ -1,4 +1,5 @@
 'use strict';
+// УДАЛИТЬ !!!
 (function () {
 
   var WIZARDS_QUANTITY = 4;

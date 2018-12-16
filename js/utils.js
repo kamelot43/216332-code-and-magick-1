@@ -15,6 +15,9 @@ window.util = (function () {
       if (evt.keyCode === ENTER_KEYCODE) {
         action();
       }
+    },
+    findRandomValue: function (arr) {
+      return Math.floor(Math.random() * arr.length);
     }
   };
 })();
