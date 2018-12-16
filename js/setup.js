@@ -16,11 +16,6 @@
   window.colorize(setupWizadrFireball, window.WIZARD_FIREBALL_COLOR);
   window.colorize(setupWizadrEyes, window.WIZARD_EYES_COLOR);
 
-  // Пустой масив для добавления похожих магов
-  var wizards = [];
-
-  // Генерация случайных характеристик мага и добавление в массив wizards
-  // window.generateWizardsValue(wizards);
 
   // Создание мага на основе переданного шаблона,
   // заполнение его данными и вставка на страницу

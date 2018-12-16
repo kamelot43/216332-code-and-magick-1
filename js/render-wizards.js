@@ -15,12 +15,12 @@
   var setupWizadrFireball = userDialog.querySelector('.setup-fireball-wrap');
 
   // Очистка формы после отправки
-  function resetForm(form) {
+  function resetForm(curentForm) {
     setTimeout(function () {
       setupWizadrCout.style.fill = '';
       setupWizadrEyes.style.fill = '';
       setupWizadrFireball.style.backgroundColor = '';
-      form.reset();
+      curentForm.reset();
     }, 100);
   }
 
@@ -37,7 +37,7 @@
   };
 
   form.addEventListener('submit', function (evt) {
-    window.backend.save(new FormData(form), function (response) {
+    window.backend.save(new FormData(form), function () {
       userDialog.classList.add('hidden');
       resetForm(form);
     });
