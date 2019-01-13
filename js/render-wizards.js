@@ -27,10 +27,12 @@
   // Функция вставки на страницу DOM-элемента
   window.renderWizards = function (arr) {
     var fragment = document.createDocumentFragment();
-    for (var i = 0; i < MAX_WIZARDS; i++) {
+    var takeNumber = arr.length > MAX_WIZARDS ? MAX_WIZARDS : arr.length;
+    similarListElement.innerHTML = '';
+    for (var i = 0; i < takeNumber; i++) {
       // Функция createWizard создает мага на основе шаблона и заполняет его данными
       // функция экспортируется из другого модуля
-      fragment.appendChild(window.createWizard(arr[window.util.findRandomValue(arr)]));
+      fragment.appendChild(window.createWizard(arr[i]));
     }
     similarListElement.appendChild(fragment);
     document.querySelector('.setup-similar').classList.remove('hidden');
@@ -38,9 +40,9 @@
 
   form.addEventListener('submit', function (evt) {
     window.backend.save(new FormData(form), function () {
+      evt.preventDefault();
       userDialog.classList.add('hidden');
       resetForm(form);
     });
-    evt.preventDefault();
-  });
+  }, window.backend.error);
 })();
