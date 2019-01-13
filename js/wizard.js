@@ -27,8 +27,8 @@
   var wizardEyesElement = wizardElement.querySelector('.wizard-eyes');
 
   window.wizard = {
-    onEyesChange: function (color) {},
-    onCoatChange: function (color) {}
+    onEyesChange: function () {},
+    onCoatChange: function () {}
   };
 
   var getRandomElement = function (array) {
@@ -39,14 +39,14 @@
 
   wizardCoatElement.addEventListener('click', function () {
     var newColor = getRandomElement(COAT_COLORS);
-    this.style.fill = newColor;
+    wizardCoatElement.style.fill = newColor;
     window.wizard.onCoatChange(newColor);
   });
 
 
   wizardEyesElement.addEventListener('click', function () {
     var newColor = getRandomElement(EYES_COLORS);
-    this.style.fill = newColor;
+    wizardEyesElement.style.fill = newColor;
     window.wizard.onEyesChange(newColor);
   });
 
